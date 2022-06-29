@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-W11Upgrade [TPM 2.0 Bypass Tool]</title>
+    <style>
+        * {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            margin: 0 auto;
+            background-color: rgb(32, 36, 57);
+            color: white;
+        }
+
+
+        img {
+            display: block;
+            margin: 0px auto;
+            text-align: center;
+            width: 64px;
+            height: auto;
+            padding-top: 15px;
+        }
+
+        .section {
+            padding: 15px;
+        }
+
+        h2,
+        h3,
+        button {
+            text-align: center;
+        }
+
+        h2 {
+            color: steelblue;
+        }
+
+        .btn {
+            color: white;
+            display: inline-block;
+            width: 43%;
+            padding: 10px 0px;
+            margin: 20px;
+            box-shadow: 2px 2px 2px #262b30;
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#606c88', endColorstr='#3f4c6b', GradientType=0);
+            border: 1px solid slategray;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+        }
+
+        details {
+            background-color: #3b434b;
+            color: white;
+            padding: 20px;
+        }
+
+        details:hover {
+            cursor: pointer;
+        }
+
+        .link {
+            position: absolute;
+            display: block;
+            width: 100%;
+            right:0;
+        }
+
+      .text_btm, .text_btm2 {
+          display: inline-block;
+          margin: 0 auto;
+          padding: 10px 0;
+      }
+      .text_btm2 {
+          text-align: right;
+	  width: 60%;
+      }
+      .text_btm {
+ 	width: 39%;
+	}
+      .logo_img {
+            position: absolute;
+            display: block;
+            width: 12%;
+            left:30px;
+      }
+
+      a, a:link, a:visited {
+        color: steelblue;
+      }
+    </style>
+    <HTA:APPLICATION ICON="https://windowsbase.pl/uploads/app/updates/modules/tools_icon.ico" navigable="yes"
+        MAXIMIZEBUTTON="NO" SCROLL="YES" BORDER="DIALOG">
+        <script>
+            window.resizeTo(800, 600);
+            window.moveTo((screen.width - 800) / 2, (screen.height - 600) / 2);
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/details-polyfill@1/index.min.js" async></script>
+</head>
+
+<body>
+<div style="background: white; color: black; max-height: 76px; border-bottom: 2px solid steelblue;">
+    &nbsp;
+    <img src="https://windowsbase.pl/uploads/app/updates/modules/tools.png" style="width: 10%; display: inline-block; position: relative; top: -16px;">
+    <h3 style="width: 70%; display: inline-block; position: absolute; top: -10px; text-align: left; right: 105px;">| To-W11Upgrade</h3>
+    <h3 style="width: 70%; display: inline-block; position: relative; top: -38px; font-weight: 400; font-size:15px;">Narzędzie do usuwania TPM 2.0 z obrazu instalacyjnego Windows 11!</h3>
+</div>
+    <div class="section">
+        <p>Jest to narzędzie umożliwiające obejście dla niekompatybilnych komputerów (instalację systemu Windows 11 w
+            formie aktualizacji z systemu Windows 10). <b>Proszę zapoznaj się z poniższymi krokami, by móc zainstalować system
+            na Twoim niewspieranym komputerze. Gdy to zrobisz, kliknij na odpowiedni przycisk poniżej:</b></p>
+            <button class="btn" id="btn01">Aktualizacja</button>
+            <button class="btn" id="btn02">Czysta instalacja</button>        
+            <hr>
+	<li style="margin-left: 20px;"><p style="font-size:16px; font-weight:400;"><b>Przewodnik krok po kroku</b></p></li>
+        <details>
+            <summary><b>Aktualizacja z Windows 10 do Windows 11</b></summary>
+            <ul>
+                <li>Utwórz nośnik instalacyjny na urządzeniu wielokrotnego zapisu, np: pendrive, za pomocą programu <a id="link1" href="#">Rufus</a> lub <a id="link2" href="#">Media Creation Tool</a>. Gotowy nośnik powinien zawierać rozpakowane pliki instalacyjne systemu Windows 11 (tak jak na zdjęciu poniżej).</li><br>
+                <img id="imagelink1" src="https://i.imgur.com/nP82T0L.png" style="width: 100%; margin: 0px auto; cursor: pointer;"><br>
+                <li>Kliknij na powyższy przycisk <b>"Aktualizacja"</b> i wskaż folder do którego rozpakowałeś pliki
+                    instalacyjne (utworzyłeś obraz instalacyjny).</li><br>
+                <img id="imagelink2" src="https://i.imgur.com/a5nGiMk.png" style="width: 350px; margin: 0px auto; cursor: pointer;"><br>
+                <li>Zaczekaj i zatwierdź wszystkie okna dialogowe.</li><br>
+                <li>Po uruchomieniu instalatora, odłącz dostęp do Internetu, następnie kliknij <b>"Zmień sposób
+                        pobierania aktualizacji przez instalator"</b> i wybierz <b>"Nie teraz"</b>, po czym kliknij
+                    dalej.</li><br>
+            </ul>
+            <p>Gotowe! Teraz możesz zainstalować Windows 11.</p>
+        </details>
+        <br>
+        <script>
+    $('#imagelink1').click(function() {
+    link1 = "%windir%\\system32\\mshta.exe https://i.imgur.com/nP82T0L.png";
+    var WshShell = new ActiveXObject("Wscript.Shell");
+    WshShell.Run(link1);
+    });
+
+    $('#imagelink2').click(function() {
+    link2 = "%windir%\\system32\\mshta.exe https://i.imgur.com/a5nGiMk.png";
+    var WshShell = new ActiveXObject("Wscript.Shell");
+    WshShell.Run(link2);
+    });
+
+    $('#link1').click(function() {
+    link6 = "%windir%\\system32\\mshta.exe https://windowsbase.pl/pages/old/makebootabledevice.html";
+    var WshShell = new ActiveXObject("Wscript.Shell");
+    WshShell.Run(link6);
+    });
+
+    $('#link2').click(function() {
+    link7 = "%windir%\\system32\\mshta.exe https://windowsbase.pl/pages/old/w10mediacreate.html";
+    var WshShell = new ActiveXObject("Wscript.Shell");
+    WshShell.Run(link7);
+    });
+
+        </script>
+        <details>
+            <summary><b>Czysta instalacja systemu Windows 11</b></summary>
+            <p>Do wykonania tego kroku będzie potrzebny dodatkowy nośnik wymienny np: pendrive, płyta oraz specjalnie
+                pliki. Zanim zaczniesz instalację systemu, przygotuj nośnik na którym ten program umieści odpowiednie
+                pliki, następnie kliknij na powyższy przycisk <b>"Czysta instalacja"</b> i wskaż folder twojego dysku
+                wymiennego, do którego mają zostać skopiowane pliki. Następnie ponownie uruchom komputer i uruchom instalator z poziomu BIOS/UEFI.</p>
+            <ul>
+                <li>Po przejściu do etapu instalcji i wyświetleniu komunikatu informującego o niezgodnym sprzęcie, wciskamy na klawiaturze kombinację
+                    klawiszy <b>Shift + F10</b>. </li><br>
+                <img id="imagelink3" src="https://i.imgur.com/nSX29iF.png" style="width: 100%; margin: 0px auto; cursor: pointer;"><br>
+                <li>W oknie wiersza poleceń wpisujemy komendę: <b>"regedit"</b> i wciskamy klawisz ENTER. W tym momencie
+                    do komputera włóż nośnik wymienny, np: płyta CD lub pendrive, na którym zapisany jest plik
+                    <b>"disable_tpm.reg"</b></li><br>
+                <img id="imagelink4" src="https://i.imgur.com/Yz8uYiM.png" style="width: 100%; margin: 0px auto; cursor: pointer;"><br>
+                <li>W otwartym oknie Edytora rejestru klikamy następująco przyciski: <b>"Edycja" > "Importuj"</b>.
+                    Następnie w oknie eksploratora plików, wybieramy plik <b>"disable_tpm.reg"</b>. Zaznaczamy go i
+                    klikamy przycisk <b>"Otwórz"</b>. Na sam koniec potwierdzamy dodanie wpisów do rejestru klikając w
+                    przycisk <b>"Tak"</b>. Zamykamy okno Edytora rejestru i wracamy się do poprzedniego punktu
+                    instalacji systemu. Ponownie wybieramy edycję systemu do zainstalowania i kontynuujemy instalację
+                    omijając powyższy błąd.</li><br>
+                <img id="imagelink5" src="https://i.imgur.com/mFRQ9bf.png" style="width: 100%; margin: 0px auto; cursor: pointer;"><br>
+            </ul>
+            <p>Gotowe! Teraz możesz zainstalować Windows 11.</p>
+
+            <script>
+                $('#imagelink3').click(function() {
+                link3 = "%windir%\\system32\\mshta.exe https://i.imgur.com/nSX29iF.png";
+                var WshShell = new ActiveXObject("Wscript.Shell");
+                WshShell.Run(link3);
+                });
+            
+                $('#imagelink4').click(function() {
+                link4 = "%windir%\\system32\\mshta.exe https://i.imgur.com/Yz8uYiM.png";
+                var WshShell = new ActiveXObject("Wscript.Shell");
+                WshShell.Run(link4);
+                });
+
+                $('#imagelink5').click(function() {
+                link5 = "%windir%\\system32\\mshta.exe https://i.imgur.com/mFRQ9bf.png";
+                var WshShell = new ActiveXObject("Wscript.Shell");
+                WshShell.Run(link5);
+                });
+                    </script>
+        </details>
+        <br>
+  <span class="text_btm"><a href="https://windowsbase.pl">Odwiedź naszą stronę</a></span>
+  <span class="text_btm2">Aplikacja stworzona dla WindowsBASE.pl</span>
+        <script>
+            $("#btn01").click(function () {
+                var lname = "\"" + location.pathname;
+                var lname2 = lname.replace('index.hta', 'files') + "\\command.vbs\"";
+                var lname3 = lname2.replace(/\\/g, "\\\\");
+                var WshShell = new ActiveXObject("Wscript.Shell");
+		        WshShell.Run(lname3);
+            });
+
+            $("#btn02").click(function () {
+                var lname = "\"" + location.pathname;
+                var lname2 = lname.replace('index.hta', 'files') + "\\command2.vbs\"";
+                var lname3 = lname2.replace(/\\/g, "\\\\");
+                var WshShell = new ActiveXObject("Wscript.Shell");
+                WshShell.Run(lname3);
+            });
+        </script>
+
+</body>
+
+</html>
